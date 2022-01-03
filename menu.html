@@ -1,32 +1,103 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+#container{
+    margin: 5%;
+display: grid;
+grid-template-columns: repeat(4,25%);
+grid-gap: 20px;
+
+
+}
+botton{
+    height: 200px;
+    width: 50px;
+}
+
+
+    </style>
 </head>
 <body>
-    
+    <div id="container"></div>
 </body>
 </html>
 <script>
+    let array1=JSON.parse(localStorage.getItem("userdata")) || []
 
-let url="https://www.themealdb.com/api/json/v1/1/categories.php";
-async function getUsers(){
+async function addFood(){
 
 try{
-let res= await fetch(url);
 
-let data= await  res.json();
-let users=data.categories;
+let res=await fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
 
-console.log("users:",users)
+let data=await res.json()
+
+let list=data.categories;
+
+appendUsers(list)
+console.log(list);
+
 }catch(err){
-console.log("err",err)
+    console.log(err);
 }
+
+
 }
-getUsers()
+
+addFood()
+
+
+function appendUsers(arr){
+
+arr.forEach(function (user) {
+
+    let userdiv=document.getElementById("container")
+
+
+    let div=document.createElement("div");
+
+    let image=document.createElement("img");
+image.setAttribute("src",user.strCategoryThumb)
+
+let btn=document.createElement("button")
+btn.textContent="Add to Cart"
+let p=document.createElement("p");
+p.textContent=user.strCategory;
+
+let p1=document.createElement("p")
+let random=(min,max)=>Math.floor(Math.random()*max-min+1)+min;
+p1.textContent=random(100,500);
+let x=p1.textContent=random(100,500);
+
+    div.append(image,p,p1,btn);
+userdiv.append(div);
+
+btn.addEventListener("click",function(){
+
+let obj={
+image:user.strCategoryThumb,
+
+price:x,
+
+name:user.strCategory
+};
+
+array1.push(obj);
+localStorage.setItem("userdata",JSON.stringify(array1));
+window.location.href="new.html"; 
+})
+
+});
+
+}
+
+
+
 
 
 
