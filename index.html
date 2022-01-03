@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #con1{
+            height: 1100px;
+            width: 1200px;
+            margin: auto;
+            background-color: white;
+        }
+        #container{
+            height: 400px;
+            width: 700px;
+            border: 3px solid blue;
+            margin: auto;
+            border-top: 100px;
+        }
+        #box{
+            height: 40px;
+            width: 680px;
+            border: 2px solid brown;
+            
+            margin-top: 30px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .miv{
+            margin-left: 10px;
+            border: transparent;
+            background-color: transparent;
+        }
+
+        
+    </style>
+</head>
+<body style="background-color: black;">
+    <div id="con1">
+    <div id="container">
+        <diV id="box">
+<button class="miv" id="home"><h4>Menu</h4></button>
+<button class="miv" id="login"><h4>LOGIN
+</h4></button>
+<button class="miv" id="signup"><h4>Signup</h4></button>
+
+        </diV>
+    </div>
+</div>
+</body>
+</html>
+<script>
+document.querySelector("#home").addEventListener("click",function(){
+    window.location.href="menu.html";
+});
+
+document.querySelector("#login").addEventListener("click",function(){
+    window.location.href="login.html";
+});
+document.querySelector("#signup").addEventListener("click",function(){
+    window.location.href="signup.html";
+});
+
+
+
+
+</script>
