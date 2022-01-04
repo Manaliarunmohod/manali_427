@@ -11,7 +11,9 @@
 </body>
 </html>
 <script>
-    var array1=JSON.parse(localStorage.getItem("userdata"))
+    var array1=JSON.parse(localStorage.getItem("userdata")) || [];
+
+
     array1.map(function(elem){
         let box=document.getElementById("box");
 
@@ -22,13 +24,23 @@ image.setAttribute("src",elem.image)
 let name=document.createElement("p")
  name.textContent=elem.name;
  
- let price=document.createElement("p")
+ let price=document.createElement("h3")
  price.textContent=elem.price;
 
+ let button=document.createElement("button");
+ button.textContent="CheckOut";
 
- div.append(image,name,price)
+ div.append(image,name,price,button)
 
  box.append(div);
+
+
+ button.addEventListener("click",function(){
+    window.location.href="checkout.html"; 
+})
+
+
+
 
     })
 </script>

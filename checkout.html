@@ -10,13 +10,17 @@
     <div>
     <input  id="address" type="text" placeholder="enter your address" />
     <button onclick="submit()">Submit</button>
+    <div></div>
     </div>
 </body>
 </html>
 <script>
 
 function submit(){
+
+
     alert("your order is accepting")
+
     setTimeOut(function(){
         alert("your order is being cooked")
     },3000);
